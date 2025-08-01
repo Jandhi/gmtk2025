@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://pyhrko0gssfh"]
+
+[ext_resource type="Texture2D" uid="uid://d4myf6atjd6bp" path="res://art/background.png" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://duhhnxh5w4sj6" path="res://gameplay/objects/screwdriver.tscn" id="2_7jktm"]
+[ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="3_ryrav"]
+[ext_resource type="PackedScene" uid="uid://15s8v0taknqh" path="res://gameplay/objects/screw.tscn" id="4_eow3j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc0e3"]
+resource_local_to_scene = true
+shader = ExtResource("3_ryrav")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vef74"]
+resource_local_to_scene = true
+shader = ExtResource("3_ryrav")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(240, 135)
+texture = ExtResource("1_80nbo")
+
+[node name="Screw" parent="." instance=ExtResource("4_eow3j")]
+material = SubResource("ShaderMaterial_fc0e3")
+position = Vector2(194, 126)
+
+[node name="Screwdriver" parent="." instance=ExtResource("2_7jktm")]
+material = SubResource("ShaderMaterial_vef74")
+position = Vector2(161, 166)
+
+[node name="Screw2" parent="." instance=ExtResource("4_eow3j")]
+material = SubResource("ShaderMaterial_fc0e3")
+position = Vector2(284, 130)
+
+[node name="Screw3" parent="." instance=ExtResource("4_eow3j")]
+material = SubResource("ShaderMaterial_fc0e3")
+position = Vector2(240, 94)

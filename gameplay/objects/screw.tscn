@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://15s8v0taknqh"]
+
+[ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_qwu1y"]
+[ext_resource type="Texture2D" uid="uid://m5h104vvwl4g" path="res://art/screw_out.png" id="2_8ygm0"]
+[ext_resource type="Script" uid="uid://c7gudf8atjsog" path="res://gameplay/objects/hoverable.gd" id="3_8ygm0"]
+[ext_resource type="Script" uid="uid://cyc6fj8extmbs" path="res://gameplay/objects/screw.gd" id="3_iyjlk"]
+[ext_resource type="Texture2D" uid="uid://bgsohudqb2usq" path="res://art/screw_in.png" id="4_ubbdb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ygm0"]
+radius = 5.0
+
+[node name="Screw" type="Sprite2D" node_paths=PackedStringArray("hoverable")]
+texture_filter = 1
+material = ExtResource("1_qwu1y")
+texture = ExtResource("2_8ygm0")
+script = ExtResource("3_iyjlk")
+not_screwed = ExtResource("2_8ygm0")
+screwed = ExtResource("4_ubbdb")
+hoverable = NodePath("Hoverable")
+
+[node name="Hoverable" type="Node" parent="." node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("3_8ygm0")
+sprite = NodePath("..")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://c7gudf8atjsog"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CircleShape2D_8ygm0")
