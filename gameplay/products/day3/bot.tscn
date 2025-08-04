@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmvcgrtvchfa6"]
+
+[ext_resource type="Texture2D" uid="uid://4uexa0n6mum1" path="res://art/bot.png" id="1_o4c7w"]
+[ext_resource type="Script" uid="uid://cjupr5khkndyq" path="res://gameplay/product.gd" id="2_5by6c"]
+[ext_resource type="PackedScene" uid="uid://dpqg2tbocixfo" path="res://gameplay/objects/hammer.tscn" id="3_o4c7w"]
+[ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="4_mwkgo"]
+[ext_resource type="PackedScene" uid="uid://dt4p2xo7gusm5" path="res://gameplay/objects/nail.tscn" id="5_5by6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwkgo"]
+resource_local_to_scene = true
+shader = ExtResource("4_mwkgo")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pu73b"]
+resource_local_to_scene = true
+shader = ExtResource("4_mwkgo")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[node name="Node2D" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_o4c7w")
+script = ExtResource("2_5by6c")
+
+[node name="Nail" parent="." instance=ExtResource("5_5by6c")]
+material = SubResource("ShaderMaterial_mwkgo")
+position = Vector2(4, -66)
+
+[node name="Nail2" parent="." instance=ExtResource("5_5by6c")]
+material = SubResource("ShaderMaterial_mwkgo")
+position = Vector2(-23, 45)
+
+[node name="Nail3" parent="." instance=ExtResource("5_5by6c")]
+material = SubResource("ShaderMaterial_mwkgo")
+position = Vector2(36, 48)
+
+[node name="Nail4" parent="." instance=ExtResource("5_5by6c")]
+material = SubResource("ShaderMaterial_mwkgo")
+position = Vector2(-10, -75)
+
+[node name="Nail5" parent="." instance=ExtResource("5_5by6c")]
+material = SubResource("ShaderMaterial_mwkgo")
+position = Vector2(18, -76)
+
+[node name="Hammer" parent="." instance=ExtResource("3_o4c7w")]
+material = SubResource("ShaderMaterial_pu73b")
+position = Vector2(-39, 68)

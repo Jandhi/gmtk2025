@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt4p2xo7gusm5"]
+
+[ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_phqpq"]
+[ext_resource type="Texture2D" uid="uid://ku22k3yma3n2" path="res://art/nail_out.png" id="2_vs7km"]
+[ext_resource type="Script" uid="uid://dtwg3d80ljhis" path="res://gameplay/objects/nail.gd" id="3_vs7km"]
+[ext_resource type="Script" uid="uid://c7gudf8atjsog" path="res://gameplay/objects/hoverable.gd" id="4_05up4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phqpq"]
+radius = 4.0
+
+[node name="Nail" type="Sprite2D" node_paths=PackedStringArray("hoverable")]
+texture_filter = 1
+material = ExtResource("1_phqpq")
+texture = ExtResource("2_vs7km")
+script = ExtResource("3_vs7km")
+hoverable = NodePath("Hoverable")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_phqpq")
+
+[node name="Hoverable" type="Node" parent="." node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("4_05up4")
+sprite = NodePath("..")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://c7gudf8atjsog"

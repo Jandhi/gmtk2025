@@ -15,10 +15,14 @@ run/main_scene="uid://pyhrko0gssfh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*res://gameplay/audio/audio_manager.gd"
+
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/mode=3
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"

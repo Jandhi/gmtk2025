@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0lm5513witg2"]
+
+[ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_0phws"]
+[ext_resource type="Texture2D" uid="uid://6cfqbkr1oxm4" path="res://art/da_boss.png" id="2_cwjif"]
+[ext_resource type="Script" uid="uid://pmmgjm1w5fmv" path="res://gameplay/da_boss.gd" id="3_ba0u3"]
+[ext_resource type="Texture2D" uid="uid://dpiagvw2mdp3f" path="res://art/bubble.png" id="3_clfcr"]
+[ext_resource type="Texture2D" uid="uid://b4e858nwjng44" path="res://art/mouth_closed.png" id="5_cwhb2"]
+[ext_resource type="Texture2D" uid="uid://c4kmva0jiqgq5" path="res://art/mouth.png" id="6_ba0u3"]
+[ext_resource type="Theme" uid="uid://dsbylivtb3fsb" path="res://gameplay/theme.tres" id="7_dwehl"]
+
+[node name="DaBoss" type="Sprite2D" node_paths=PackedStringArray("mouth", "speech_bubble", "text_label")]
+texture_filter = 1
+material = ExtResource("1_0phws")
+texture = ExtResource("2_cwjif")
+script = ExtResource("3_ba0u3")
+mouth = NodePath("MouthClosed")
+mouth_open_texture = ExtResource("6_ba0u3")
+mouth_closed_texture = ExtResource("5_cwhb2")
+speech_bubble = NodePath("Bubble")
+text_label = NodePath("Bubble/RichTextLabel")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+texture_filter = 1
+material = ExtResource("1_0phws")
+position = Vector2(226, -31)
+texture = ExtResource("3_clfcr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Bubble"]
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 68.0
+offset_bottom = 31.0
+theme = ExtResource("7_dwehl")
+bbcode_enabled = true
+
+[node name="MouthClosed" type="Sprite2D" parent="."]
+material = ExtResource("1_0phws")
+position = Vector2(-6, -28)
+texture = ExtResource("6_ba0u3")

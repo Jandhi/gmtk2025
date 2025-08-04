@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdhbolp3os60v"]
+
+[ext_resource type="Texture2D" uid="uid://yohahdwwq5gr" path="res://art/puter.png" id="1_3t2u0"]
+[ext_resource type="Script" uid="uid://cjupr5khkndyq" path="res://gameplay/product.gd" id="2_7hgqb"]
+[ext_resource type="PackedScene" uid="uid://dunhsrcexjpbn" path="res://gameplay/objects/lever_slot.tscn" id="3_4r8ia"]
+[ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="4_m3y7w"]
+[ext_resource type="PackedScene" uid="uid://68w4r8yt52cu" path="res://gameplay/objects/lever_piece.tscn" id="5_f35ta"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gftlv"]
+resource_local_to_scene = true
+shader = ExtResource("4_m3y7w")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwdv1"]
+resource_local_to_scene = true
+shader = ExtResource("4_m3y7w")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[node name="Node2D" type="Sprite2D"]
+texture = ExtResource("1_3t2u0")
+script = ExtResource("2_7hgqb")
+
+[node name="LeverSlot" parent="." instance=ExtResource("3_4r8ia")]
+material = SubResource("ShaderMaterial_gftlv")
+position = Vector2(8, 18)
+
+[node name="LeverPiece" parent="." instance=ExtResource("5_f35ta")]
+material = SubResource("ShaderMaterial_pwdv1")
+position = Vector2(2, 102)

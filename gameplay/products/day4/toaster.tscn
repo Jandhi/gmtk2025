@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxqgbp86bmfa6"]
+
+[ext_resource type="Texture2D" uid="uid://dcjvvrau5101m" path="res://art/toaster.png" id="1_es6ig"]
+[ext_resource type="Script" uid="uid://cjupr5khkndyq" path="res://gameplay/product.gd" id="2_kolqa"]
+[ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="4_682b7"]
+[ext_resource type="PackedScene" uid="uid://15s8v0taknqh" path="res://gameplay/objects/screw.tscn" id="5_tha1p"]
+[ext_resource type="PackedScene" uid="uid://dunhsrcexjpbn" path="res://gameplay/objects/lever_slot.tscn" id="6_gjrs7"]
+[ext_resource type="PackedScene" uid="uid://duhhnxh5w4sj6" path="res://gameplay/objects/screwdriver.tscn" id="7_afe6u"]
+[ext_resource type="PackedScene" uid="uid://68w4r8yt52cu" path="res://gameplay/objects/lever_piece.tscn" id="7_es6ig"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5tn2"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rohfj"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_682b7"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_es6ig"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kolqa"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1weh0"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tha1p"]
+resource_local_to_scene = true
+shader = ExtResource("4_682b7")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[node name="Node2D" type="Sprite2D"]
+texture = ExtResource("1_es6ig")
+script = ExtResource("2_kolqa")
+
+[node name="Screw" parent="." instance=ExtResource("5_tha1p")]
+material = SubResource("ShaderMaterial_m5tn2")
+position = Vector2(21, 16)
+screw_type = 1
+
+[node name="Screw2" parent="." instance=ExtResource("5_tha1p")]
+material = SubResource("ShaderMaterial_rohfj")
+position = Vector2(-16, 39)
+screw_type = 1
+
+[node name="Screw3" parent="." instance=ExtResource("5_tha1p")]
+material = SubResource("ShaderMaterial_682b7")
+position = Vector2(-13, 1)
+
+[node name="LeverSlot" parent="." instance=ExtResource("6_gjrs7")]
+material = SubResource("ShaderMaterial_es6ig")
+position = Vector2(61, 8)
+rotation = 1.46454
+
+[node name="LeverPiece" parent="." instance=ExtResource("7_es6ig")]
+material = SubResource("ShaderMaterial_kolqa")
+position = Vector2(7, 58)
+
+[node name="Screwdriver" parent="." instance=ExtResource("7_afe6u")]
+material = SubResource("ShaderMaterial_1weh0")
+position = Vector2(-58, 44)
+screw_type = 1
+
+[node name="Screwdriver2" parent="." instance=ExtResource("7_afe6u")]
+material = SubResource("ShaderMaterial_tha1p")
+position = Vector2(85, 39)

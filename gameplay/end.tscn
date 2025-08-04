@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsj6c637fk32i"]
+
+[ext_resource type="Texture2D" uid="uid://b8b7wpeogr7ct" path="res://art/end.png" id="1_rfvnt"]
+[ext_resource type="Script" uid="uid://d204u4hu00neg" path="res://gameplay/end.gd" id="2_i22jx"]
+[ext_resource type="Theme" uid="uid://dsbylivtb3fsb" path="res://gameplay/theme.tres" id="2_yy1ot"]
+[ext_resource type="AudioStream" uid="uid://dt0fc58fd85ll" path="res://audio/Bloody punches 6.wav" id="3_wxqri"]
+
+[node name="Node2D" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_rfvnt")
+centered = false
+script = ExtResource("2_i22jx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 168.0
+offset_top = 165.0
+offset_right = 270.0
+offset_bottom = 202.0
+theme = ExtResource("2_yy1ot")
+bbcode_enabled = true
+text = "[center][color=#cc241d]A game by Jan Dohring"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wxqri")
+autoplay = true

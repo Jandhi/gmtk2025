@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://coqmsmywg4c31"]
+
+[ext_resource type="Texture2D" uid="uid://d1waxfh6l3p3p" path="res://art/clock.png" id="1_mxjo1"]
+[ext_resource type="Texture2D" uid="uid://cl2n132iuch0t" path="res://art/clock_hand.png" id="2_1ugc2"]
+[ext_resource type="Script" uid="uid://dop08uja3hvh8" path="res://gameplay/clock.gd" id="2_sqbga"]
+
+[node name="Clock" type="Sprite2D" node_paths=PackedStringArray("hand")]
+texture_filter = 1
+texture = ExtResource("1_mxjo1")
+script = ExtResource("2_sqbga")
+hand = NodePath("ClockHand")
+
+[node name="ClockHand" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-172, -75)
+texture = ExtResource("2_1ugc2")

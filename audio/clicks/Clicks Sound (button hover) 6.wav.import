@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://7vp72n3654uq"
+path="res://.godot/imported/Clicks Sound (button hover) 6.wav-bd79dfbaf70ae756404d1103048ad3e3.sample"
+
+[deps]
+
+source_file="res://audio/clicks/Clicks Sound (button hover) 6.wav"
+dest_files=["res://.godot/imported/Clicks Sound (button hover) 6.wav-bd79dfbaf70ae756404d1103048ad3e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq36taqdn73sj"]
+
+[ext_resource type="Texture2D" uid="uid://cyr1ey8gwcyi1" path="res://art/car.png" id="1_ijrjo"]
+[ext_resource type="PackedScene" uid="uid://15s8v0taknqh" path="res://gameplay/objects/screw.tscn" id="2_nlaxg"]
+[ext_resource type="Script" uid="uid://cjupr5khkndyq" path="res://gameplay/product.gd" id="2_xoj3n"]
+[ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="3_xoj3n"]
+[ext_resource type="PackedScene" uid="uid://duhhnxh5w4sj6" path="res://gameplay/objects/screwdriver.tscn" id="5_iw3p8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gw0ta"]
+resource_local_to_scene = true
+shader = ExtResource("3_xoj3n")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23l2x"]
+resource_local_to_scene = true
+shader = ExtResource("3_xoj3n")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0cwp"]
+resource_local_to_scene = true
+shader = ExtResource("3_xoj3n")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mje7"]
+resource_local_to_scene = true
+shader = ExtResource("3_xoj3n")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[node name="Car" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_ijrjo")
+script = ExtResource("2_xoj3n")
+
+[node name="Screw3" parent="." instance=ExtResource("2_nlaxg")]
+material = SubResource("ShaderMaterial_gw0ta")
+position = Vector2(-65, 60)
+scale = Vector2(1.00962, 1)
+
+[node name="Screw5" parent="." instance=ExtResource("2_nlaxg")]
+material = SubResource("ShaderMaterial_23l2x")
+position = Vector2(38, -5)
+
+[node name="Screw7" parent="." instance=ExtResource("2_nlaxg")]
+material = SubResource("ShaderMaterial_y0cwp")
+position = Vector2(84, 52)
+scale = Vector2(1.00962, 1)
+
+[node name="Screwdriver" parent="." instance=ExtResource("5_iw3p8")]
+material = SubResource("ShaderMaterial_8mje7")
+position = Vector2(6, 87)

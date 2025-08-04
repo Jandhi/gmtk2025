@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dunhsrcexjpbn"]
+
+[ext_resource type="Texture2D" uid="uid://bqojhnnt8v8ws" path="res://art/lever_slot.png" id="1_jyksu"]
+[ext_resource type="Texture2D" uid="uid://dfs25xmpjkppb" path="res://art/lever_off.png" id="1_pecsi"]
+[ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_ymopn"]
+[ext_resource type="Script" uid="uid://cv601u3im3h2h" path="res://gameplay/objects/lever.gd" id="2_sky5t"]
+[ext_resource type="Script" uid="uid://c7gudf8atjsog" path="res://gameplay/objects/hoverable.gd" id="3_pecsi"]
+[ext_resource type="Texture2D" uid="uid://dqg8m8uxtsqid" path="res://art/lever_on.png" id="4_uel45"]
+[ext_resource type="Script" uid="uid://stvhujxmc642" path="res://gameplay/objects/clickable.gd" id="4_xhnwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnwf"]
+size = Vector2(38, 6)
+
+[node name="LeverSlot" type="Sprite2D" node_paths=PackedStringArray("slot_collision", "off_collision", "on_collision", "clickable", "hoverable")]
+texture_filter = 1
+material = ExtResource("1_ymopn")
+texture = ExtResource("1_jyksu")
+script = ExtResource("2_sky5t")
+slot_collision = NodePath("Area2D/CollisionShape2D")
+off_collision = NodePath("Area2D/CollisionPolygon2D")
+on_collision = NodePath("Area2D/CollisionPolygon2D2")
+slot_texture = ExtResource("1_jyksu")
+off_texture = ExtResource("1_pecsi")
+on_texture = ExtResource("4_uel45")
+clickable = NodePath("Clickable")
+hoverable = NodePath("Hoverable")
+
+[node name="Hoverable" type="Node" parent="." node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("3_pecsi")
+sprite = NodePath("..")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://c7gudf8atjsog"
+
+[node name="Clickable" type="Node" parent="." node_paths=PackedStringArray("hoverable")]
+script = ExtResource("4_xhnwf")
+hoverable = NodePath("../Hoverable")
+metadata/_custom_type_script = "uid://stvhujxmc642"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xhnwf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+process_mode = 4
+polygon = PackedVector2Array(-17, -22, -17, -21, -18, -21, -18, -17.4, -16, -16.4, -16, -14.6, -11.4, -10, -11, -8.6, -6.4, -4, -20, -4, -20, 4, 20, 4, 20, -4, 0.400002, -4, 0, -4.4, 0, -6.5, -5, -10.5, -5, -12.5, -10, -16.5, -10, -18.5, -13, -20.6, -13, -22)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+process_mode = 4
+polygon = PackedVector2Array(13, -22.4, 13, -20.5, 1.5, -7, 0.299999, -7, -0.700001, -4, -20, -4, -20, 4, 20, 4, 20, -4, 7, -4, 16.5, -17, 18, -17, 18, -20.7)

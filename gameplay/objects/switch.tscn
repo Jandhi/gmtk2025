@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccxqfajib8xs5"]
+
+[ext_resource type="Texture2D" uid="uid://c5uklxq5avl3a" path="res://art/switch_off.png" id="1_g6acg"]
+[ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_m7wh4"]
+[ext_resource type="Texture2D" uid="uid://yntd1xwqu775" path="res://art/switch_on.png" id="1_wbr84"]
+[ext_resource type="Script" uid="uid://btds676eur7v3" path="res://gameplay/objects/switch.gd" id="2_g6acg"]
+[ext_resource type="Script" uid="uid://stvhujxmc642" path="res://gameplay/objects/clickable.gd" id="4_ggc27"]
+[ext_resource type="Script" uid="uid://c7gudf8atjsog" path="res://gameplay/objects/hoverable.gd" id="5_brq72"]
+
+[node name="Switch" type="Sprite2D" node_paths=PackedStringArray("hoverable", "clickable")]
+texture_filter = 1
+material = ExtResource("1_m7wh4")
+scale = Vector2(1, 1.00364)
+texture = ExtResource("1_g6acg")
+script = ExtResource("2_g6acg")
+hoverable = NodePath("Hoverable")
+clickable = NodePath("Clickable")
+on_texture = ExtResource("1_wbr84")
+off_texture = ExtResource("1_g6acg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -7, -1, -7, -3, -3, -3, 3, -1, 5, 0, 5, 2, 3, 2, -3)
+
+[node name="Clickable" type="Node" parent="." node_paths=PackedStringArray("hoverable")]
+script = ExtResource("4_ggc27")
+hoverable = NodePath("../Hoverable")
+metadata/_custom_type_script = "uid://stvhujxmc642"
+
+[node name="Hoverable" type="Node" parent="." node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("5_brq72")
+sprite = NodePath("..")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://c7gudf8atjsog"

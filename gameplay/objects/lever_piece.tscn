@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://68w4r8yt52cu"]
+
+[ext_resource type="Texture2D" uid="uid://cf5uujxrifg0k" path="res://art/lever_piece.png" id="1_cph1p"]
+[ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_jqtbp"]
+[ext_resource type="Script" uid="uid://c7cc0eut4r0db" path="res://gameplay/objects/lever_piece.gd" id="2_2gycf"]
+[ext_resource type="Script" uid="uid://c7gudf8atjsog" path="res://gameplay/objects/hoverable.gd" id="3_o2o2k"]
+[ext_resource type="Script" uid="uid://stvhujxmc642" path="res://gameplay/objects/clickable.gd" id="4_0gdm3"]
+
+[node name="LeverPiece" type="Sprite2D" node_paths=PackedStringArray("clickable", "hoverable", "area")]
+texture_filter = 1
+material = ExtResource("1_jqtbp")
+texture = ExtResource("1_cph1p")
+script = ExtResource("2_2gycf")
+clickable = NodePath("Clickable")
+hoverable = NodePath("Hoverable")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(11, -7, 11, -5.8, 3.8, -4, -0.200001, -4, -11, 0, -14.5, 0, -11.7, 7, -9.8, 7, 13, -1, 16.6, -1, 15, -4.2, 15, -7)
+
+[node name="Hoverable" type="Node" parent="." node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("3_o2o2k")
+sprite = NodePath("..")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://c7gudf8atjsog"
+
+[node name="Clickable" type="Node" parent="." node_paths=PackedStringArray("hoverable")]
+script = ExtResource("4_0gdm3")
+hoverable = NodePath("../Hoverable")
+metadata/_custom_type_script = "uid://stvhujxmc642"

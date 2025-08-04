@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://15s8v0taknqh"]
+[gd_scene load_steps=11 format=3 uid="uid://15s8v0taknqh"]
 
 [ext_resource type="Material" uid="uid://diqualp3osaci" path="res://shaders/outline_material.tres" id="1_qwu1y"]
 [ext_resource type="Texture2D" uid="uid://m5h104vvwl4g" path="res://art/screw_out.png" id="2_8ygm0"]
 [ext_resource type="Script" uid="uid://c7gudf8atjsog" path="res://gameplay/objects/hoverable.gd" id="3_8ygm0"]
 [ext_resource type="Script" uid="uid://cyc6fj8extmbs" path="res://gameplay/objects/screw.gd" id="3_iyjlk"]
+[ext_resource type="Texture2D" uid="uid://bw41aavx7loqc" path="res://art/screw_out_flat.png" id="4_0w2ll"]
 [ext_resource type="Texture2D" uid="uid://bgsohudqb2usq" path="res://art/screw_in.png" id="4_ubbdb"]
+[ext_resource type="Texture2D" uid="uid://b3leqj3bgxae5" path="res://art/screw_out_square.png" id="5_cx76v"]
+[ext_resource type="Texture2D" uid="uid://cw0g82jtw4jq2" path="res://art/screw_in_flat.png" id="7_mxpkt"]
+[ext_resource type="Texture2D" uid="uid://bgjkk33irbv6e" path="res://art/screw_in_square.png" id="8_0dx28"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ygm0"]
 radius = 5.0
@@ -12,10 +16,19 @@ radius = 5.0
 [node name="Screw" type="Sprite2D" node_paths=PackedStringArray("hoverable")]
 texture_filter = 1
 material = ExtResource("1_qwu1y")
+scale = Vector2(1.0048, 1)
 texture = ExtResource("2_8ygm0")
 script = ExtResource("3_iyjlk")
-not_screwed = ExtResource("2_8ygm0")
-screwed = ExtResource("4_ubbdb")
+screw_out = Dictionary[int, Texture2D]({
+0: ExtResource("2_8ygm0"),
+1: ExtResource("4_0w2ll"),
+2: ExtResource("5_cx76v")
+})
+screw_in = Dictionary[int, Texture2D]({
+0: ExtResource("4_ubbdb"),
+1: ExtResource("7_mxpkt"),
+2: ExtResource("8_0dx28")
+})
 hoverable = NodePath("Hoverable")
 
 [node name="Hoverable" type="Node" parent="." node_paths=PackedStringArray("sprite", "area")]

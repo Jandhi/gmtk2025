@@ -1,45 +1,65 @@
-[gd_scene load_steps=7 format=3 uid="uid://pyhrko0gssfh"]
+[gd_scene load_steps=12 format=3 uid="uid://pyhrko0gssfh"]
 
 [ext_resource type="Texture2D" uid="uid://d4myf6atjd6bp" path="res://art/background.png" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://duhhnxh5w4sj6" path="res://gameplay/objects/screwdriver.tscn" id="2_7jktm"]
+[ext_resource type="Script" uid="uid://dq07p2nlaw86i" path="res://game.gd" id="1_rvswv"]
+[ext_resource type="PackedScene" uid="uid://b0lm5513witg2" path="res://gameplay/da_boss.tscn" id="2_80cx4"]
+[ext_resource type="PackedScene" uid="uid://coqmsmywg4c31" path="res://gameplay/clock.tscn" id="3_mfdv2"]
 [ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="3_ryrav"]
-[ext_resource type="PackedScene" uid="uid://15s8v0taknqh" path="res://gameplay/objects/screw.tscn" id="4_eow3j"]
+[ext_resource type="Texture2D" uid="uid://bowpf46pxv2ql" path="res://art/foregruond.png" id="4_e8heu"]
+[ext_resource type="PackedScene" uid="uid://bgps3sqfy72l3" path="res://gameplay/audio/audio_player_bank.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://ccd16jggtr3y5" path="res://gameplay/menu.tscn" id="11_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://bbdjl8ulwy74m" path="res://gameplay/day_sign.tscn" id="17_e8heu"]
+[ext_resource type="Texture2D" uid="uid://dveajp0looa4" path="res://art/belt.png" id="19_boyg6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc0e3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1jbl"]
 resource_local_to_scene = true
 shader = ExtResource("3_ryrav")
 shader_parameter/is_active = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 1.5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vef74"]
-resource_local_to_scene = true
-shader = ExtResource("3_ryrav")
-shader_parameter/is_active = false
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/blink_color = Color(1, 1, 1, 1)
-shader_parameter/blink_time_scale = 0.0
-
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("da_boss", "day_sign", "belt1", "belt2", "clock")]
+texture_filter = 1
+script = ExtResource("1_rvswv")
+da_boss = NodePath("DaBoss")
+day_sign = NodePath("DaySign")
+belt1 = NodePath("Belt")
+belt2 = NodePath("Belt2")
+clock = NodePath("Clock")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(240, 135)
 texture = ExtResource("1_80nbo")
 
-[node name="Screw" parent="." instance=ExtResource("4_eow3j")]
-material = SubResource("ShaderMaterial_fc0e3")
-position = Vector2(194, 126)
+[node name="Clock" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(240, 136)
 
-[node name="Screwdriver" parent="." instance=ExtResource("2_7jktm")]
-material = SubResource("ShaderMaterial_vef74")
-position = Vector2(161, 166)
+[node name="DaBoss" parent="." instance=ExtResource("2_80cx4")]
+material = SubResource("ShaderMaterial_f1jbl")
+position = Vector2(144, 400)
 
-[node name="Screw2" parent="." instance=ExtResource("4_eow3j")]
-material = SubResource("ShaderMaterial_fc0e3")
-position = Vector2(284, 130)
+[node name="Foregruond" type="Sprite2D" parent="."]
+position = Vector2(240, 224)
+texture = ExtResource("4_e8heu")
 
-[node name="Screw3" parent="." instance=ExtResource("4_eow3j")]
-material = SubResource("ShaderMaterial_fc0e3")
-position = Vector2(240, 94)
+[node name="Belt" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(240, 200)
+texture = ExtResource("19_boyg6")
+
+[node name="Belt2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-240, 200)
+texture = ExtResource("19_boyg6")
+
+[node name="AudioPlayerBank" parent="." instance=ExtResource("5_7jktm")]
+
+[node name="DaySign" parent="." instance=ExtResource("17_e8heu")]
+position = Vector2(240, 35)
+
+[node name="Menu" parent="." node_paths=PackedStringArray("game") instance=ExtResource("11_mfdv2")]
+game = NodePath("..")

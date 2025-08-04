@@ -5,6 +5,9 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_2cd1o")
+shader_parameter/is_active = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0

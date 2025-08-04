@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbdjl8ulwy74m"]
+
+[ext_resource type="Texture2D" uid="uid://ct8iy5ffr3oqk" path="res://art/day_sign.png" id="1_n2i5s"]
+[ext_resource type="Script" uid="uid://b0oxehhawk3ri" path="res://gameplay/day_sign.gd" id="2_cvof8"]
+[ext_resource type="Theme" uid="uid://dsbylivtb3fsb" path="res://gameplay/theme.tres" id="2_sdb2j"]
+
+[node name="DaySign" type="Sprite2D" node_paths=PackedStringArray("text_label")]
+texture_filter = 1
+texture = ExtResource("1_n2i5s")
+script = ExtResource("2_cvof8")
+text_label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -94.0
+offset_top = -108.0
+offset_right = 115.0
+offset_bottom = -54.0
+theme = ExtResource("2_sdb2j")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center][color=cc241d]0[/color] Days since last \"accident\""

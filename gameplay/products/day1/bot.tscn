@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://byrufb1cwn1tu"]
+
+[ext_resource type="Texture2D" uid="uid://4uexa0n6mum1" path="res://art/bot.png" id="1_s7dik"]
+[ext_resource type="Script" uid="uid://cjupr5khkndyq" path="res://gameplay/product.gd" id="2_qliys"]
+[ext_resource type="PackedScene" uid="uid://15s8v0taknqh" path="res://gameplay/objects/screw.tscn" id="3_vey13"]
+[ext_resource type="Shader" uid="uid://bhavc7uwebclr" path="res://shaders/outline.gdshader" id="4_3bpit"]
+[ext_resource type="PackedScene" uid="uid://duhhnxh5w4sj6" path="res://gameplay/objects/screwdriver.tscn" id="5_3bpit"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hoywk"]
+resource_local_to_scene = true
+shader = ExtResource("4_3bpit")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nq55t"]
+resource_local_to_scene = true
+shader = ExtResource("4_3bpit")
+shader_parameter/is_active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+shader_parameter/step_rate = 4.0
+shader_parameter/distortion_strength = 0.0
+
+[node name="Node2D" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_s7dik")
+script = ExtResource("2_qliys")
+
+[node name="Screw" parent="." instance=ExtResource("3_vey13")]
+material = SubResource("ShaderMaterial_hoywk")
+position = Vector2(-10, -72)
+
+[node name="Screw2" parent="." instance=ExtResource("3_vey13")]
+material = SubResource("ShaderMaterial_hoywk")
+position = Vector2(17, -74)
+scale = Vector2(1.00962, 1)
+
+[node name="Screw5" parent="." instance=ExtResource("3_vey13")]
+material = SubResource("ShaderMaterial_hoywk")
+position = Vector2(14, 31)
+
+[node name="Screwdriver" parent="." instance=ExtResource("5_3bpit")]
+material = SubResource("ShaderMaterial_nq55t")
+position = Vector2(6, 87)
